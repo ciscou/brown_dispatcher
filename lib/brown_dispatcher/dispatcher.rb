@@ -57,6 +57,8 @@ module BrownDispatcher
     end
 
     def merge_user_auth!(params)
+      return if @env["action_dispatch.cookies"].nil?
+
       signed_cookies = @env["action_dispatch.cookies"].signed
       user_auth = signed_cookies[:user_auth]
 
